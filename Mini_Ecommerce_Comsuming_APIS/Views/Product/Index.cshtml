@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Mini_Ecommerce_Comsuming_APIS.Models.ProductModel>
+@{
+    ViewData["Title"] = "Products";
+}
+<p>
+</p>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+     
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3 m-2" id="myproductList">
+
+                <div class="card shadow-sm" id="items">
+                    <img src="@String.Format(" data:image /gif;base64,{0}", Convert.ToBase64String(item.Image))" class="img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </h5>
+                        <p class="card-text  text-center font-bold">
+                            @Html.DisplayFor(modelItem => item.Price,new{@class="font-bold"})
+                        </p>
+                        <p class="text-center">
+                            <i class="bi bi-star-half text-primary text-center"></i> <i class="bi bi-star-half text-primary text-center"></i> <i class="bi bi-star-half text-primary text-center"></i> <i class="bi bi-star-half text-primary text-center"></i>
+                        </p>
+                        <a asp-action="Details" class="btn btn-primary w-100 bg-info" asp-route-id="@item.ProductID"> <i class="bi bi-info-square"></i> &nbsp;View Details</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+@section Scripts{
+<script type="text/javascript" src="~/js/jquery-3.6.0.js"></script>
+<script src="~/js/CustomJQuery.js" type="text/javascript"></script>
+}
+
+
